@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* 基础样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f5f5;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  padding: 50px 20px;
+}
+
+/* 时间轴容器 */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 时间轴线 */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background: #3498db;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 时间轴项容器 */
+.timeline-item {
+  padding: 20px 40px;
+  position: relative;
+  width: 50%;
+}
+
+/* 交替排列 */
+.timeline-item.left {
+  left: 0;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+/* 内容容器 */
+.timeline-content {
+  position: relative;
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+/* 悬停动画 */
+.timeline-content:hover {
+  transform: translateY(-5px);
+}
+
+/* 时间标记 */
+.time {
+  position: absolute;
+  top: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #3498db;
+  background: white; /* 添加白色背景，避免被轴线遮挡 */
+  padding: 5px 10px; /* 添加内边距 */
+  border-radius: 5px; /* 圆角效果 */
+  z-index: 2; /* 确保年份显示在轴线的前面 */
+}
+
+.left .time {
+  right: -120px; /* 调整年份位置，避免与轴线重叠 */
+}
+
+.right .time {
+  left: -120px; /* 调整年份位置，避免与轴线重叠 */
+}
+
+/* 图片样式 */
+.timeline-image {
+  margin: 15px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.timeline-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.timeline-image:hover img {
+  transform: scale(1.05);
+}
+
+/* 时间节点指示器 */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  border: 4px solid #3498db;
+  top: 30px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.left::after {
+  right: -17px;
+}
+
+.right::after {
+  left: -17px;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 768px) {
+  .timeline::after {
+    left: 30px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    padding-left: 70px;
+    padding-right: 20px;
+  }
+
+  .timeline-item::before {
+    left: 54px;
+  }
+
+  .left .time,
+  .right .time {
+    left: 15px;
+    right: auto;
+  }
+
+  .timeline-item::after {
+    left: 18px !important;
+  }
+}
+</style>
+</head>
+<body>
+
+  <div class="timeline">
+    <!-- 时间节点1 -->
+    <div class="timeline-item left">
+      <div class="timeline-content">
+        <!-- <span class="time">2011-2017</span> -->
+        <h2>弥市小学：2011-2017</h2>
+        <p>度过了人生中最无忧无虑的时光</p>
+        <div class="timeline-image">
+          <a href="https://example.com/project-start" target="_blank">
+            <img src="../images&videoes/弥市小学.jpg" alt="项目启动">
+          </a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- 时间节点2 -->
+    <div class="timeline-item right">
+      <div class="timeline-content">
+        <!-- <span class="time">2017-2020</span> -->
+        <h2>弥市中学：2017-2020</h2>
+        <p>进入了初中，开始意识到学习的重要性</p>
+        <div class="timeline-image">
+          <a href="https://baike.baidu.com/item/%E5%BC%A5%E5%B8%82%E4%B8%AD%E5%AD%A6/4862195" target="_blank">
+            <img src="../images&videoes/弥市中学.jpg" alt="产品发布">
+          </a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- 时间节点3 -->
+    <div class="timeline-item left">
+      <div class="timeline-content">
+        <!-- <span class="time">2020-2023</span> -->
+        <h2>荆州中学：2020-2023</h2>
+        <p>正式与高考对线，难忘的岁月</p>
+        <div class="timeline-image">
+          <a href="http://www.hbjzzx.com/" target="_blank">
+            <img src="../images&videoes/荆州中学.jpg" alt="版本升级">
+          </a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- 时间节点4 -->
+    <div class="timeline-item right">
+      <div class="timeline-content">
+        <!-- <span class="time">2023-至今</span> -->
+        <h2>中南财经政法大学：2023-至今</h2>
+        <p>珍惜时间，把握当下</p>
+        <div class="timeline-image">
+          <a href="https://www.zuel.edu.cn/" target="_blank">
+            <img src="../images&videoes/中南大.jpg" alt="全球拓展">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
